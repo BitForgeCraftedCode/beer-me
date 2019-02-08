@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+.App {
+	max-width: $max-width;
+	margin: auto;
+}
 .header {
 	text-align: center;
 	&__img {
