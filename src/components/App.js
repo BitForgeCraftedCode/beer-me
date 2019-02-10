@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ToastContainer } from 'react-toastify';
 
 
 import Directions from './Directions';
@@ -22,6 +23,7 @@ class App extends Component {
                     <Directions />
                     <Beer />
                     <DrunkennessLevel />
+                    <ToastContainer />
                 </main>
             </div>
         );

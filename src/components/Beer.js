@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 
 import { fetchBeerData } from '../redux/actions';
@@ -7,10 +8,17 @@ class Beer extends React.Component {
 	componentDidMount() {
 		//this.props.fetchBeerData();
 	}
+	notify = () => {
+		toast.success("Take a sip!!", {
+			position: toast.POSITION.BOTTOM_CENTER
+		});
+	}
 	render() {
 		const beerData = this.props.beerData;
+		const drunkLevel = this.props.drunkLevel;
 		console.log(beerData);
 		let myBeer;
+		//build beer UI
 		if (beerData.length === 1) {
 			let foodPairing = beerData[0].food_pairing.map((food, index) => {
 				return <li key={index}>{food}</li>;
@@ -27,6 +35,12 @@ class Beer extends React.Component {
 				</div>
 			);
 		}
+		//alert sip statup
+		if(beerData.length === 1) {
+			if(beerData[0].abv < drunkLevel) {
+				this.notify();
+			}
+		}
 		return (
 			<div>
 				{myBeer}
@@ -38,7 +52,8 @@ class Beer extends React.Component {
 
 const mapStateToProps = state => {
 	return {
-		beerData: state.beerData
+		beerData: state.beerData,
+		drunkLevel: state.drunkLevel
 	};
 };
 const mapDispatchToProps = {
