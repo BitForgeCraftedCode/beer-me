@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { ToastContainer } from 'react-toastify';
 
-
 import Directions from './Directions';
 import Beer from './Beer';
 import DrunkennessLevel from './DrunkennessLevel';
@@ -9,9 +8,7 @@ import DrunkennessLevel from './DrunkennessLevel';
 import beer from '../images/beer.svg';
 
 class App extends Component {
-    
     render() {
-       
         return (
             <div className="App">
                 <header className="header">
@@ -29,8 +26,6 @@ class App extends Component {
         );
     }
 }
-
-
 
 export default App;
 

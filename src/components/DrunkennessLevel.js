@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 
 import { setDrunkLevel } from '../redux/actions';
@@ -11,6 +11,21 @@ class DrunkennessLevel extends React.Component {
 			drunkLevel: '--Please choose an option--'
 		};
 	}
+	notify = () => {
+		toast.warn('Please select your drunkenness level', {
+			position: toast.POSITION.TOP_CENTER
+		});
+	};
+	taunt = () => {
+		toast.error('Come on baby my grandma can drink more than you!!', {
+			position: toast.POSITION.TOP_CENTER
+		});
+	};
+	encourage = () => {
+		toast.success('Thats more like it! Drink up!', {
+			position: toast.POSITION.TOP_CENTER
+		});
+	};
 
 	handleDrunkChange(e) {
 		this.setState({ drunkLevel: e.target.value });
@@ -19,8 +34,14 @@ class DrunkennessLevel extends React.Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		if (this.state.drunkLevel === '--Please choose an option--') {
-			alert('Please select your drunkenness level');
+			this.notify();
 			return;
+		}
+		if (this.state.drunkLevel <= 7) {
+			this.taunt();
+		}
+		if (this.state.drunkLevel > 7) {
+			this.encourage();
 		}
 		this.props.setDrunkLevel(this.state.drunkLevel);
 		this.resetForm();
@@ -85,4 +106,7 @@ const mapDispatchToProps = {
 	setDrunkLevel: setDrunkLevel
 };
 
-export default connect(null, mapDispatchToProps)(DrunkennessLevel);
+export default connect(
+	null,
+	mapDispatchToProps
+)(DrunkennessLevel);
