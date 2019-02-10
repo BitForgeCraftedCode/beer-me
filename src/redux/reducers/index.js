@@ -2,7 +2,8 @@ import { combineReducers } from 'redux';
 
 const initialState = {
 	beerData: [],
-	loaded: true
+	loaded: true,
+	drunkLevel: 6.5
 };
 
 const beerData = (beerData = initialState.beerData, action) => {
@@ -24,7 +25,19 @@ const loaded = (loaded = initialState.loaded, action) => {
 	}
 };
 
+const drunkLevel = (drunkLevel = initialState.drunkLevel, action) => {
+	switch (action.type) {
+		case 'SET_DRUNKLEVEL':
+			console.log(action.payload);
+			return action.payload;
+		default:
+			console.log(drunkLevel);
+			return drunkLevel;
+	}
+};
+
 export default combineReducers({
 	beerData: beerData,
 	loaded: loaded,
+	drunkLevel: drunkLevel
 });

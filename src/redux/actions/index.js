@@ -5,7 +5,7 @@ everytime the action creator gets called it will retrun a new throttle function
 and throttle will not work as intended
 */
 
-const fetchMyBeer = throttle((dispatch) => {
+const fetchMyBeer = throttle(dispatch => {
 	fetch('https://api.punkapi.com/v2/beers/random')
 		.then(res => res.json())
 		.then(
@@ -43,5 +43,12 @@ see https://gist.github.com/krstffr/245fe83885b597aabaf06348220c2fe9
 export const fetchBeerData = () => {
 	return dispatch => {
 		return fetchMyBeer(dispatch);
+	};
+};
+
+export const setDrunkLevel = drunkLevel => {
+	return {
+		type: 'SET_DRUNKLEVEL',
+		payload: drunkLevel
 	};
 };

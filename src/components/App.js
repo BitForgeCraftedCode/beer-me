@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 import Directions from './Directions';
 import Beer from './Beer';
+import DrunkennessLevel from './DrunkennessLevel';
 
 import beer from '../images/beer.svg';
 
@@ -20,7 +21,7 @@ class App extends Component {
                 <main className="main" role="main">
                     <Directions />
                     <Beer />
-
+                    <DrunkennessLevel />
                 </main>
             </div>
         );
