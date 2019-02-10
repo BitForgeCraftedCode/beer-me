@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { ToastContainer } from 'react-toastify';
+import { Route } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Directions from './Directions';
 import Beer from './Beer';
@@ -11,15 +14,30 @@ class App extends Component {
     render() {
         return (
             <div className="App">
+                <nav className="nav">
+                    <Link to="/" className="nav__link">
+                        Home
+                    </Link>
+                    <Link to="/settings" className="nav__link">
+                        Settings and Directions
+                    </Link>
+                </nav>
                 <header className="header">
                     <h1>Beer Me Drinking Game!</h1>
                     <h2>Discover new beers and drink some too!!</h2>
                     <img className="header__img" src={beer} alt="beer" />
                 </header>
                 <main className="main" role="main">
-                    <Directions />
-                    <Beer />
-                    <DrunkennessLevel />
+                    <Route exact path="/" render={() => <Beer />} />
+                    <Route
+                        path="/settings"
+                        render={() => (
+                            <div>
+                                <Directions />
+                                <DrunkennessLevel />
+                            </div>
+                        )}
+                    />
                     <ToastContainer />
                 </main>
             </div>
