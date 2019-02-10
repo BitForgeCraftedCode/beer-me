@@ -5,16 +5,14 @@ import { connect } from 'react-redux';
 import { fetchBeerData } from '../redux/actions';
 
 class Beer extends React.Component {
-	componentDidMount() {
-		//this.props.fetchBeerData();
-	}
 	takeSip = () => {
 		toast.success('Take a sip!!', {
 			position: toast.POSITION.BOTTOM_CENTER
 		});
 	};
+	//not really an error just a taunt
 	bigBaby = () => {
-		toast.warn('You wimp this beer is too strong for Ya!!', {
+		toast.error('You wimp this beer is too strong for Ya!!', {
 			position: toast.POSITION.BOTTOM_CENTER
 		});
 	};

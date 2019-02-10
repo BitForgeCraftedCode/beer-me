@@ -1,5 +1,5 @@
 import throttle from 'lodash/throttle';
-/*4sec throttle
+/*30sec throttle
 define the throttled fetch outside the action creator otherwise
 everytime the action creator gets called it will retrun a new throttle function
 and throttle will not work as intended
@@ -28,7 +28,7 @@ const fetchMyBeer = throttle(dispatch => {
 				});
 			}
 		);
-}, 4000);
+}, 30000);
 
 /*
 export const fetchBeerData = () => dispatch => fetchMyBeer(dispatch);
