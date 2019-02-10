@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { fetchBeerData } from '../redux/actions';
 
+import Directions from './Directions';
+
 import beer from '../images/beer.svg';
 
 class App extends Component {
@@ -37,12 +39,8 @@ class App extends Component {
                     <img className="header__img" src={beer} alt="beer" />
                 </header>
                 <main className="main" role="main">
-                    <p>
-                        This app is a simple drinking game. Set the Drunkeness level and click beer me. If the returned
-                        beer has a higher abv level than your Drunkeness setting ya got to take a sip!! Remember the
-                        lower the Drunkeness level the more sips ya got to take!!
-                    </p>
-                    <p style={{ textAlign: 'center' }}>Please Drink Responsibly!</p>
+                    <Directions />
+                    
                     {myBeer}
                     <button onClick={() => this.props.fetchBeerData()}>Beer Me</button>
                 </main>
