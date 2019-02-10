@@ -8,11 +8,16 @@ class Beer extends React.Component {
 	componentDidMount() {
 		//this.props.fetchBeerData();
 	}
-	notify = () => {
-		toast.success("Take a sip!!", {
+	takeSip = () => {
+		toast.success('Take a sip!!', {
 			position: toast.POSITION.BOTTOM_CENTER
 		});
-	}
+	};
+	bigBaby = () => {
+		toast.warn('You wimp this beer is too strong for Ya!!', {
+			position: toast.POSITION.BOTTOM_CENTER
+		});
+	};
 	render() {
 		const beerData = this.props.beerData;
 		const drunkLevel = this.props.drunkLevel;
@@ -27,7 +32,7 @@ class Beer extends React.Component {
 			myBeer = (
 				<div style={{ textAlign: 'center' }}>
 					<p>{beerData[0].name}</p>
-					<p>abv: {beerData[0].abv}</p>
+					<p>ABV: {beerData[0].abv}</p>
 					<img src={beerData[0].image_url} alt="beer" style={{ height: '300px' }} />
 					<p>{beerData[0].description}</p>
 					<p>Food Parings</p>
@@ -35,10 +40,13 @@ class Beer extends React.Component {
 				</div>
 			);
 		}
-		//alert sip statup
-		if(beerData.length === 1) {
-			if(beerData[0].abv < drunkLevel) {
-				this.notify();
+		//alert sip status
+		if (beerData.length === 1) {
+			if (beerData[0].abv <= drunkLevel) {
+				this.takeSip();
+			}
+			if (beerData[0].abv > drunkLevel) {
+				this.bigBaby();
 			}
 		}
 		return (
