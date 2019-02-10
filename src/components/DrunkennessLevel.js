@@ -22,7 +22,7 @@ class DrunkennessLevel extends React.Component {
 		});
 	};
 	encourage = () => {
-		toast.success('Thats more like it! Drink up!', {
+		toast.success(`That's more like it! Drink up!`, {
 			position: toast.POSITION.TOP_CENTER
 		});
 	};

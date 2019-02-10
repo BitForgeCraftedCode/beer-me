@@ -6,6 +6,8 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
 import reducers from './redux/reducers';
+import { loadState, saveState } from './modules/localStorage';
+import throttle from 'lodash/throttle';
 
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
@@ -13,10 +15,25 @@ import * as serviceWorker from './serviceWorker';
 import './styles/main.scss';
 import 'react-toastify/dist/ReactToastify.min.css';
 
+/*
+ If you produced reducer with combineReducers,
+ persistedState must be a plain object with the same shape as the keys passed to it.
+*/
+const persistedState = loadState();
+
 const store = createStore(
 	reducers,
+	persistedState,
 	applyMiddleware(thunk)
 );
+
+store.subscribe(throttle(() => {
+	//console.log(store.getState());
+	saveState({
+		beerData: store.getState().beerData,
+		drunkLevel: store.getState().drunkLevel
+	});
+}, 1000));
 
 ReactDOM.render(
 	<Provider store={store}>

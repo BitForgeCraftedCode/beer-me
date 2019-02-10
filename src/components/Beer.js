@@ -12,7 +12,7 @@ class Beer extends React.Component {
 	};
 	//not really an error just a taunt
 	bigBaby = () => {
-		toast.error('You wimp this beer is too strong for Ya!!', {
+		toast.error('You wimp! This beer is too strong for ya!!', {
 			position: toast.POSITION.BOTTOM_CENTER
 		});
 	};
