@@ -10,7 +10,6 @@ const fetchMyBeer = throttle((dispatch) => {
 		.then(res => res.json())
 		.then(
 			result => {
-				console.log(result);
 				dispatch({
 					type: 'FETCH_BEERDATA',
 					payload: {
