@@ -45,6 +45,6 @@ class App extends Component {
     }
 }
 
-export default App;
+export default withRouter((App));
 
 // https://api.punkapi.com/v2/beers?abv_gt=20
