@@ -59,7 +59,9 @@ class Beer extends React.Component {
 		return (
 			<div className="beer">
 				{myBeer}
-				<button onClick={() => this.props.fetchBeerData()}>Beer Me</button>
+				<div className="appBtnContainer">
+					<button className="appBtn" onClick={() => this.props.fetchBeerData()}>Beer Me</button>
+				</div>
 			</div>
 		);
 	}

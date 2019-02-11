@@ -89,11 +89,13 @@ class DrunkennessLevel extends React.Component {
 					</select>
 				</fieldset>
 
-				<div className="DrunkSettings__btnContainer">
-					<button type="submit" value="Submit">
+				<div className="appBtnContainer">
+					<button className="appBtn" type="submit" value="Submit">
 						Change Drunk Level
 					</button>
-					<button type="button" value="Reset" onClick={() => this.resetForm()}>
+				</div>
+				<div className="appBtnContainer">
+					<button className="appBtn" type="button" value="Reset" onClick={() => this.resetForm()}>
 						Cancel
 					</button>
 				</div>

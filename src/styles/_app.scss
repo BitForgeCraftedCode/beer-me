@@ -1,5 +1,17 @@
 @charset "UTF-8";
 
+.appBtnContainer {
+	text-align: center;
+	margin: 5px;
+}
+.appBtn {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	font-size: $huge-font-size;
+}
+
 .App {
 	max-width: $max-width;
 	margin: auto;
