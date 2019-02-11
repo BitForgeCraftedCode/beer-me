@@ -61,32 +61,34 @@ class DrunkennessLevel extends React.Component {
 					<label className="DrunkSettings__label" htmlFor="drunk-select">
 						ABV Level:
 					</label>
-					<select
-						className="DrunkSettings__select"
-						id="drunk-select"
-						value={this.state.drunkLevel}
-						onChange={e => this.handleDrunkChange(e)}
-					>
-						<option value="--Please choose an option--" disabled>
-							--Please choose an option--
-						</option>
-						<option value="5">5</option>
-						<option value="5.5">5.5</option>
-						<option value="6">6</option>
-						<option value="6.5">6.5</option>
-						<option value="7">7</option>
-						<option value="7.5">7.5</option>
-						<option value="8">8</option>
-						<option value="8.5">8.5</option>
-						<option value="9">9</option>
-						<option value="9.5">9.5</option>
-						<option value="10">10</option>
-						<option value="10.5">10.5</option>
-						<option value="11">11</option>
-						<option value="11.5">11.5</option>
-						<option value="12">12</option>
-						<option value="12.5">12.5</option>
-					</select>
+					<div className="DrunkSettings__select-div">
+						<select
+							className="DrunkSettings__select"
+							id="drunk-select"
+							value={this.state.drunkLevel}
+							onChange={e => this.handleDrunkChange(e)}
+						>
+							<option value="--Please choose an option--" disabled>
+								--Please choose an option--
+							</option>
+							<option value="5">5</option>
+							<option value="5.5">5.5</option>
+							<option value="6">6</option>
+							<option value="6.5">6.5</option>
+							<option value="7">7</option>
+							<option value="7.5">7.5</option>
+							<option value="8">8</option>
+							<option value="8.5">8.5</option>
+							<option value="9">9</option>
+							<option value="9.5">9.5</option>
+							<option value="10">10</option>
+							<option value="10.5">10.5</option>
+							<option value="11">11</option>
+							<option value="11.5">11.5</option>
+							<option value="12">12</option>
+							<option value="12.5">12.5</option>
+						</select>
+					</div>
 				</fieldset>
 
 				<div className="appBtnContainer">

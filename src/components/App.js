@@ -27,7 +27,7 @@ class App extends Component {
                     <h1>Beer Me Drinking Game!</h1>
                     <h2>Discover new beers and drink some too!!</h2>
                     <img className="header__img" src={beer} alt="beer" />
-                    <h3>Curretn Drunkenness Level: {this.props.drunkLevel} ABV</h3>
+                    <h3>Current Drunkenness Level: {this.props.drunkLevel} ABV</h3>
                 </header>
                 <main className="main" role="main">
                     <Route exact path="/" render={() => <Beer />} />

@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+.DrunkSettings {
+
+	&__fieldset {
+		border-radius: $border-radius-xl;
+		margin-bottom: 10px;
+	}
+
+	&__legend {
+		margin-left: 30px;
+	}
+
+	&__label {
+		display: block;
+		text-align: center;
+	}
+
+	&__select-div {
+		margin: 5px auto 5px auto;
+		border: 1px solid black;
+		width: 280px;
+		border-radius: $border-radius-xl;
+		overflow: hidden;
+		background: $background-color1 url("../images/arrow-dropdown.svg") no-repeat 90% 50%;
+	}
+
+	&__select {
+		font-size: $big-font-size;
+  		font-family: $font-family;
+
+		padding: 5px 8px;
+		width: 100%;
+		border: none;
+		box-shadow: none;
+		background: transparent;
+		background-image: none;
+		-webkit-appearance: none;
+	}
+
+	&__select:focus {
+		outline: none;
+		background: $grey url("../images/arrow-dropdown.svg") no-repeat 90% 50%;
+	}
+
+	&__select:hover {
+		outline: none;
+		background: $grey url("../images/arrow-dropdown.svg") no-repeat 90% 50%;
+		cursor: pointer;
+	}
+}

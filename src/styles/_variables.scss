@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*Colors #d1aff5 #c092de  */
-
+$grey: #dbdbdb;
 $background-color1: rgba(233,233,233,1);
 $background-color2: rgba(255,255,255,1);
 $hero-color1: rgba(254, 255, 232, 1);
@@ -10,10 +10,12 @@ $hero-color2: rgba(214, 219, 191,1);
 $default-font-size: 1.5rem;
 $big-font-size: 1.75rem;
 $huge-font-size: 2rem;
+$font-family: 'Open Sans', sans-serif;
 
 /*border radius*/
 $border-radius-small: 6px;
 $border-radius-large: 10px;
+$border-radius-xl: 20px;
 
 /*max width*/
 $max-width: 70rem;
