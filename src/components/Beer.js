@@ -28,15 +28,22 @@ class Beer extends React.Component {
 			});
 
 			myBeer = (
-				<div style={{ textAlign: 'center' }}>
+				<div>
 					<p>{beerData[0].name}</p>
 					<p>{beerData[0].tagline}</p>
 					<p>First Brewed: {beerData[0].first_brewed}</p>
 					<p>ABV: {beerData[0].abv}</p>
-					<img src={beerData[0].image_url} alt="beer" style={{ height: '300px' }} />
+					<div className="beer__img-div">
+						<img className="beer__img" src={beerData[0].image_url} alt="beer" />
+					</div>
 					<p>{beerData[0].description}</p>
-					<p>Food Parings</p>
-					<ul>{foodPairing}</ul>
+					<p></p>
+					<ul className="beer__food" style={{listStyleType: 'none'}}>
+						<li>
+							<b>Food Parings</b>
+							<ul>{foodPairing}</ul>
+						</li>
+					</ul>
 				</div>
 			);
 		}
@@ -50,7 +57,7 @@ class Beer extends React.Component {
 			}
 		}
 		return (
-			<div>
+			<div className="beer">
 				{myBeer}
 				<button onClick={() => this.props.fetchBeerData()}>Beer Me</button>
 			</div>

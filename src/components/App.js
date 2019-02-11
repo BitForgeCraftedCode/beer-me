@@ -19,7 +19,7 @@ class App extends Component {
                         Home
                     </Link>
                     <Link to="/settings" className="nav__link">
-                        Settings and Directions
+                        Settings
                     </Link>
                 </nav>
                 <header className="header">

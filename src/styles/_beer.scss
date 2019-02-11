@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+.beer {
+	padding-top: 10px;
+
+	&__img-div {
+		text-align: center;
+	}
+
+	&__img {
+		height: 300px;
+	}
+
+	&__food li {
+		text-align: center;
+	}
+
+	&__food ul {
+		list-style-type: circle;
+		padding-left: 25px;
+	}
+
+	&__food ul li {
+		text-align: left;
+	}
+}
