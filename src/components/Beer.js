@@ -7,13 +7,13 @@ import { fetchBeerData } from '../redux/actions';
 class Beer extends React.Component {
 	takeSip = () => {
 		toast.success('Take a sip!!', {
-			position: toast.POSITION.BOTTOM_CENTER
+			position: toast.POSITION.TOP_CENTER
 		});
 	};
 	//not really an error just a taunt
 	bigBaby = () => {
 		toast.error('You wimp! This beer is too strong for ya!!', {
-			position: toast.POSITION.BOTTOM_CENTER
+			position: toast.POSITION.TOP_CENTER
 		});
 	};
 	render() {
