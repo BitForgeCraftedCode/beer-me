@@ -3,12 +3,37 @@
 .App {
 	max-width: $max-width;
 	margin: auto;
+	padding: 10px;
 }
+
+.nav {
+	text-align: center;
+	height: 50px;
+
+	&__link {
+		text-decoration: none;
+		color: blue;
+		font-weight: bold;
+		padding: 10px;
+		line-height: 50px;
+	}
+
+	&__link:hover {
+		background: black;
+		color: white;
+	}
+
+	&__link:focus {
+		background: black;
+		color: white;
+	}
+}
+
 .header {
 	text-align: center;
+		border-bottom: 2px solid black;
 	&__img {
 		width: 100px;
 		height: 100px;
-
 	}
 }
