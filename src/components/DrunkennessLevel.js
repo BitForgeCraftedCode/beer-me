@@ -26,6 +26,11 @@ class DrunkennessLevel extends React.Component {
 			position: toast.POSITION.TOP_CENTER
 		});
 	};
+	careful = () => {
+		toast.warn(`Well Ok it's your hangover! Don't say I didn't warn you!`, {
+			position: toast.POSITION.TOP_CENTER
+		});
+	};
 
 	handleDrunkChange(e) {
 		this.setState({ drunkLevel: e.target.value });
@@ -33,17 +38,24 @@ class DrunkennessLevel extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		if (this.state.drunkLevel === '--Please choose an option--') {
+		let drunkLevel = this.state.drunkLevel;
+		if (drunkLevel !== '--Please choose an option--') {
+			drunkLevel = parseFloat(drunkLevel);
+		}
+		if (drunkLevel === '--Please choose an option--') {
 			this.notify();
 			return;
 		}
-		if (this.state.drunkLevel <= 7) {
+		if (drunkLevel <= 8) {
 			this.taunt();
 		}
-		if (this.state.drunkLevel > 7) {
+		if (drunkLevel > 8 && drunkLevel !== 20) {
 			this.encourage();
 		}
-		this.props.setDrunkLevel(this.state.drunkLevel);
+		if (drunkLevel === 20) {
+			this.careful();
+		}
+		this.props.setDrunkLevel(drunkLevel);
 		this.resetForm();
 	}
 
@@ -87,6 +99,9 @@ class DrunkennessLevel extends React.Component {
 							<option value="11.5">11.5</option>
 							<option value="12">12</option>
 							<option value="12.5">12.5</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="20">20</option>
 						</select>
 					</div>
 				</fieldset>
