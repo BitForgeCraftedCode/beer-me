@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
@@ -26,6 +27,7 @@ class App extends Component {
                     <h1>Beer Me Drinking Game!</h1>
                     <h2>Discover new beers and drink some too!!</h2>
                     <img className="header__img" src={beer} alt="beer" />
+                    <h3>Curretn Drunkenness Level: {this.props.drunkLevel} ABV</h3>
                 </header>
                 <main className="main" role="main">
                     <Route exact path="/" render={() => <Beer />} />
@@ -45,6 +47,17 @@ class App extends Component {
     }
 }
 
-export default withRouter((App));
+const mapStateToProps = state => {
+    return {
+        drunkLevel: state.drunkLevel
+    };
+};
+
+export default withRouter(
+    connect(
+        mapStateToProps,
+        null
+    )(App)
+);
 
 // https://api.punkapi.com/v2/beers?abv_gt=20
