@@ -2,6 +2,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Beer Me Drinking Game.
 built with React and the [PUNK API](https://punkapi.com/documentation/v2)
+[react-toastify](https://www.npmjs.com/package/react-toastify) for notifications.
+
+Check out the App [Beer Me](https://beerme.surge.sh)
 
 ## Available Scripts
 
