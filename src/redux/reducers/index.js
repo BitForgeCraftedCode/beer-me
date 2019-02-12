@@ -1,27 +1,18 @@
 import { combineReducers } from 'redux';
 
 const initialState = {
-	beerData: [],
-	loaded: true,
+	beerData: [{error: null, loaded: false, beer: []}],
 	drunkLevel: 6.5
 };
 
 const beerData = (beerData = initialState.beerData, action) => {
 	switch (action.type) {
 		case 'FETCH_BEERDATA':
-			return action.payload.result;
+			return [{error: null, loaded: true, beer: [action.payload.result]}];
+		case 'FETCH_ERROR':
+			return [{error: action.payload.error, loaded: true, beer: []}];
 		default:
 			return beerData;
-	}
-};
-
-const loaded = (loaded = initialState.loaded, action) => {
-	switch (action.type) {
-		case 'FETCH_ERROR':
-			console.log(action.payload.error);
-			return action.payload.loaded;
-		default:
-			return loaded;
 	}
 };
 
@@ -38,6 +29,5 @@ const drunkLevel = (drunkLevel = initialState.drunkLevel, action) => {
 
 export default combineReducers({
 	beerData: beerData,
-	loaded: loaded,
 	drunkLevel: drunkLevel
 });

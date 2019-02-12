@@ -19,11 +19,12 @@ const fetchMyBeer = throttle(dispatch => {
 				});
 			},
 			error => {
+				console.log(error);
 				dispatch({
 					type: 'FETCH_ERROR',
 					payload: {
 						error: error,
-						loaded: false
+						loaded: true
 					}
 				});
 			}

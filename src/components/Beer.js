@@ -18,27 +18,34 @@ class Beer extends React.Component {
 	};
 	render() {
 		const beerData = this.props.beerData;
+		// console.log(beerData);
 		const drunkLevel = this.props.drunkLevel;
-		console.log(beerData);
+		const error = beerData[0].error;
+		const loaded = beerData[0].loaded;
+		const beer = beerData[0].beer[0];
+		// console.log(beer);
+		// console.log(Array.isArray(beer));
+		// console.log(typeof beer === 'object' && beer.constructor === Object);
+
 		let myBeer;
 		//build beer UI
-		if (beerData.length === 1) {
-			let foodPairing = beerData[0].food_pairing.map((food, index) => {
+		if (Array.isArray(beer)) {
+			let foodPairing = beer[0].food_pairing.map((food, index) => {
 				return <li key={index}>{food}</li>;
 			});
 
 			myBeer = (
 				<div>
-					<p>{beerData[0].name}</p>
-					<p>{beerData[0].tagline}</p>
-					<p>First Brewed: {beerData[0].first_brewed}</p>
-					<p>ABV: {beerData[0].abv}</p>
+					<p>{beer[0].name}</p>
+					<p>{beer[0].tagline}</p>
+					<p>First Brewed: {beer[0].first_brewed}</p>
+					<p>ABV: {beer[0].abv}</p>
 					<div className="beer__img-div">
-						<img className="beer__img" src={beerData[0].image_url} alt="beer" />
+						<img className="beer__img" src={beer[0].image_url} alt="beer" />
 					</div>
-					<p>{beerData[0].description}</p>
-					<p></p>
-					<ul className="beer__food" style={{listStyleType: 'none'}}>
+					<p>{beer[0].description}</p>
+					<p />
+					<ul className="beer__food" style={{ listStyleType: 'none' }}>
 						<li>
 							<b>Food Parings</b>
 							<ul>{foodPairing}</ul>
@@ -46,24 +53,50 @@ class Beer extends React.Component {
 					</ul>
 				</div>
 			);
-		}
-		//alert sip status
-		if (beerData.length === 1) {
-			if (beerData[0].abv <= drunkLevel) {
+			//alert sip status
+			if (beer[0].abv <= drunkLevel) {
 				this.takeSip();
 			}
-			if (beerData[0].abv > drunkLevel) {
+			if (beer[0].abv > drunkLevel) {
 				this.bigBaby();
 			}
 		}
-		return (
-			<div className="beer">
-				{myBeer}
-				<div className="appBtnContainer">
-					<button className="appBtn" onClick={() => this.props.fetchBeerData()}>Beer Me</button>
+		if (error || (typeof beer === 'object' && beer.constructor === Object)) {
+			return (
+				<div className="beer">
+					<p>
+						Sorry an error has occured. Perhaps we are drinking too many beers and went over the api limit!
+						Slow down!
+					</p>
+					<div className="appBtnContainer">
+						<button className="appBtn" onClick={() => this.props.fetchBeerData()}>
+							Beer Me
+						</button>
+					</div>
 				</div>
-			</div>
-		);
+			);
+		} else if (!loaded) {
+			return (
+				<div className="beer">
+					<div className="appBtnContainer">
+						<button className="appBtn" onClick={() => this.props.fetchBeerData()}>
+							Beer Me
+						</button>
+					</div>
+				</div>
+			);
+		} else if (loaded && Array.isArray(beer)) {
+			return (
+				<div className="beer">
+					{myBeer}
+					<div className="appBtnContainer">
+						<button className="appBtn" onClick={() => this.props.fetchBeerData()}>
+							Beer Me
+						</button>
+					</div>
+				</div>
+			);
+		}
 	}
 }
 
