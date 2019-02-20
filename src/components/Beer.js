@@ -18,6 +18,57 @@ class Beer extends React.Component {
 		});
 	};
 
+	renderError = () => {
+		return (
+			<div className="beer">
+				<p>
+					Sorry an error has occured. Perhaps we are drinking too many beers and went over the api limit! Slow
+					down!
+				</p>
+				<div className="appBtnContainer">
+					<button
+						className="appBtn"
+						onClick={() => {
+							this.props.fetchBeerData();
+						}}
+					>
+						Beer Me
+					</button>
+				</div>
+			</div>
+		);
+	};
+
+	renderInitial = () => {
+		return (
+			<div className="beer">
+				<div className="appBtnContainer">
+					<button
+						className="appBtn"
+						onClick={() => {
+							this.props.fetchBeerData();
+						}}
+					>
+						Beer Me
+					</button>
+				</div>
+			</div>
+		);
+	};
+
+	renderLoader = () => {
+		return (
+			<div className="beer">
+				<div className="beer__loader">
+					<div>
+						<p>Getting Beer!</p>
+						<Loader type="Puff" color="#00BFFF" height="100" width="100" />
+					</div>
+				</div>
+			</div>
+		);
+	};
+
 	render() {
 		const beerData = this.props.beerData;
 		const drunkLevel = this.props.drunkLevel;
@@ -64,61 +115,17 @@ class Beer extends React.Component {
 		//or if we try to fetch from a wrong end point. Otherwise the fetch API
 		//will return an error if one occurred
 		if (error || (typeof beer === 'object' && beer.constructor === Object)) {
-			return (
-				<div className="beer">
-					<p>
-						Sorry an error has occured. Perhaps we are drinking too many beers and went over the api limit!
-						Slow down!
-					</p>
-					<div className="appBtnContainer">
-						<button
-							className="appBtn"
-							onClick={() => {
-								this.props.fetchBeerData();
-							}}
-						>
-							Beer Me
-						</button>
-					</div>
-				</div>
-			);
+			return this.renderError();
 		}
 		//initial state loaded is false and btnClicked is false
 		//I want to display the Beer Me button for initial state
 		else if (!loaded && !btnClicked) {
-			return (
-				<div className="beer">
-					<div className="appBtnContainer">
-						<button
-							className="appBtn"
-							onClick={() => {
-								this.props.fetchBeerData();
-							}}
-						>
-							Beer Me
-						</button>
-					</div>
-				</div>
-			);
+			return this.renderInitial();
 		}
 		//Once Beer Me button is clicked loaded is false and bntClicked is true
 		//I want to display loading indicator here
 		else if (btnClicked && !loaded) {
-			return (
-				<div className="beer">
-					<div className="beer__loader">
-						<div>
-							<p>Getting Beer!</p>
-							<Loader 
-								type="Puff"
-		         				color="#00BFFF"
-		         				height="100"	
-		         				width="100"
-							/>
-						</div>
-					</div>
-				</div>
-			);
+			return this.renderLoader();
 		}
 		//Once fetch is a success loaded is true and the beer will be an array
 		//of length one. I want to display the beer UI here
