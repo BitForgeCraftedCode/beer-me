@@ -1,5 +1,6 @@
 import React from 'react';
 import { toast } from 'react-toastify';
+import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
 
 import { fetchBeerData } from '../redux/actions';
@@ -106,6 +107,12 @@ class Beer extends React.Component {
 			return (
 				<div className="beer">
 					<p>Getting Beer!</p>
+					<Loader 
+						type="Puff"
+         				color="#00BFFF"
+         				height="100"	
+         				width="100"
+					/>
 				</div>
 			);
 		}
