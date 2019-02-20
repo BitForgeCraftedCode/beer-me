@@ -106,13 +106,17 @@ class Beer extends React.Component {
 		else if (btnClicked && !loaded) {
 			return (
 				<div className="beer">
-					<p>Getting Beer!</p>
-					<Loader 
-						type="Puff"
-         				color="#00BFFF"
-         				height="100"	
-         				width="100"
-					/>
+					<div className="beer__loader">
+						<div>
+							<p>Getting Beer!</p>
+							<Loader 
+								type="Puff"
+		         				color="#00BFFF"
+		         				height="100"	
+		         				width="100"
+							/>
+						</div>
+					</div>
 				</div>
 			);
 		}
