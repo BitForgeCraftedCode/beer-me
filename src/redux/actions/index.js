@@ -11,10 +11,11 @@ const fetchMyBeer = throttle(dispatch => {
 		.then(
 			result => {
 				dispatch({
-					type: 'FETCH_BEERDATA',
+					type: 'FETCH_BEERDATA_SUCCESS',
 					payload: {
 						result: result,
-						loaded: true
+						loaded: true,
+						btnClicked: false
 					}
 				});
 			},
@@ -24,7 +25,8 @@ const fetchMyBeer = throttle(dispatch => {
 					type: 'FETCH_ERROR',
 					payload: {
 						error: error,
-						loaded: true
+						loaded: true,
+						btnClicked: false
 					}
 				});
 			}
@@ -43,6 +45,13 @@ see https://gist.github.com/krstffr/245fe83885b597aabaf06348220c2fe9
 */
 export const fetchBeerData = () => {
 	return dispatch => {
+		dispatch({
+			type: 'FETCH_BEERDATA',
+			payload: {
+				loaded: false,
+				btnClicked: true
+			}
+		});
 		return fetchMyBeer(dispatch);
 	};
 };
